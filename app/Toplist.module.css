@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.8rem;
+    padding-top: 1rem;
+    background-color: var(--meta-orange);
+    border-radius: 20px;
+    gap: 1rem;
+}
+
+.container h1 {
+    font-size: 4rem;
+    color: white;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--card-rgb);
+    border-radius: 10px;
+    border: 1px solid var(--card-border-rgb);
+    background-color: rgba(33, 33, 33, 0.5);
+    gap: 200px;
+}
+
+.item p {
+    font-size: 3rem;
+    color: white;
+    white-space: nowrap;
+}
