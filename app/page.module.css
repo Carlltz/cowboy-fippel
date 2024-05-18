@@ -45,6 +45,17 @@
     top: 0;
 }
 
+.sombrero {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.metalogga {
+    position: absolute;
+    bottom: -50px;
+}
+
 .bouncingArea {
     position: absolute;
     width: 100vw;

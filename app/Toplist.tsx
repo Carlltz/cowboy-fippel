@@ -15,8 +15,14 @@ export function Toplist() {
     const [googleData, setGoogleData] = useState<{ name: string; score: number }[] | null>(null);
 
     useEffect(() => {
-        const top5Local = JSON.parse(localStorage.getItem('top5') || '[]');
-        if (!googleData && top5Local.length > 0) {
+        const readLocal = localStorage.getItem('top5');
+        let top5Local;
+        try {
+            top5Local = readLocal && JSON.parse(readLocal);
+        } catch (error) {
+            console.error(error);
+        }
+        if (!googleData && top5Local?.length > 0) {
             setGoogleData(top5Local);
         }
     }, [googleData, setGoogleData]);

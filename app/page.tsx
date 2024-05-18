@@ -6,14 +6,26 @@ import { Emojis } from './Emojis';
 export default function Home() {
     return (
         <main className={styles.main}>
-            <Image
-                src="/metadorerna.png"
-                width={200}
-                height={200}
-                alt="Riktiga fipplare"
-                priority
-                className={styles.rotatingLogo}
-            />
+            <div className={styles.rotatingLogo}>
+                <div style={{ position: 'relative', height: '300px', width: '200px', marginTop: '100px' }}>
+                    <Image
+                        src="/metadorerna.png"
+                        width={200}
+                        height={200}
+                        alt="Riktiga fipplare"
+                        priority
+                        className={styles.metalogga}
+                    />
+                    <Image
+                        src="/sombrero.png"
+                        width={200}
+                        height={200}
+                        alt="Riktiga fipplare"
+                        priority
+                        className={styles.sombrero}
+                    />
+                </div>
+            </div>
             <div className={styles.description}>
                 <Toplist />
             </div>
