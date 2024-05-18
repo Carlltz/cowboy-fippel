@@ -24,9 +24,9 @@ export async function formatResponse(values: [[string, string]]) {
         .sort((a, b) => b.score - a.score);
 }
 
-export async function getTop5() {
+export async function getTopList() {
     const data = await loadSpreadsheet();
     const sortedData = await formatResponse(data.values as [[string, string]]);
 
-    return sortedData.slice(0, 5);
+    return sortedData;
 }

@@ -26,9 +26,7 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <div className={styles.description}>
-                <Toplist />
-            </div>
+            <Toplist />
             <Emojis />
         </main>
     );

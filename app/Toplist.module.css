@@ -1,3 +1,11 @@
+.toplistsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -21,9 +29,7 @@
     align-items: center;
     width: 100%;
     padding: 1rem;
-    background-color: var(--card-rgb);
     border-radius: 10px;
-    border: 1px solid var(--card-border-rgb);
     background-color: rgba(33, 33, 33, 0.5);
     gap: 200px;
 }
@@ -32,4 +38,29 @@
     font-size: 3rem;
     color: white;
     white-space: nowrap;
+}
+
+.smallItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.smallItem p {
+    font-size: 1.5rem;
+    color: white;
+    white-space: nowrap;
+}
+
+.small {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    padding: 1rem;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    background-color: var(--meta-orange);
+    border-radius: 20px;
 }
