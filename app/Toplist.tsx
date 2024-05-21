@@ -3,19 +3,11 @@ import { useCallback, useEffect, useState } from 'react';
 import styles from './Toplist.module.css';
 import { getTopList } from './google';
 
-const fakeData = [
-    { name: 'Alice', points: 100 },
-    { name: 'Bob', points: 50 },
-    { name: 'Charlie', points: 25 },
-    { name: 'David har ett väldigt', points: 40 },
-    { name: 'Elin', points: 30 },
-];
-
 export function Toplist() {
     const [googleData, setGoogleData] = useState<{ name: string; score: number }[] | null>(null);
 
     useEffect(() => {
-        const readLocal = localStorage.getItem('to5');
+        const readLocal = localStorage.getItem('top');
         let topLocal;
         try {
             topLocal = readLocal && JSON.parse(readLocal);
@@ -25,7 +17,8 @@ export function Toplist() {
         if (!googleData && topLocal?.length > 0) {
             setGoogleData(topLocal);
         }
-    }, [googleData, setGoogleData]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const loadGoogleData = useCallback(async () => {
         try {
@@ -35,7 +28,7 @@ export function Toplist() {
         } catch (error) {
             console.error(error);
         }
-    }, []);
+    }, [setGoogleData]);
 
     useEffect(() => {
         loadGoogleData();
@@ -44,31 +37,42 @@ export function Toplist() {
         return () => clearInterval(interval);
     }, [loadGoogleData]);
 
+    if (!googleData?.length) return null;
+
     return (
         <div className={styles.toplistsContainer}>
             <div className={styles.container}>
-                <h1>👽 Top 5 🤠</h1>
-                {googleData?.slice(0, 5).map((item, index) => (
+                <h1>👽 Top 1 🤠</h1>
+                {googleData?.slice(0, 1).map((item, index) => (
                     <ToplistItem
-                        key={index}
+                        key={item.name}
                         pos={index + 1}
                         name={item.name}
                         score={item.score}
                     />
                 ))}
             </div>
-            <div className={styles.small}>
-                {googleData?.slice(5).map((item, index) => (
-                    <div
+            {/* <div className={styles.small}>
+                {googleData?.slice(2).map((item, index) => (
+                    <SmallItem
                         key={item.name}
-                        className={styles.smallItem}>
-                        <p>
-                            {index + 6}. {item.name}
-                        </p>
-                        <p>{item.score} points</p>
-                    </div>
+                        pos={index + 3}
+                        name={item.name}
+                        score={item.score}
+                    />
                 ))}
-            </div>
+            </div> */}
+        </div>
+    );
+}
+
+function SmallItem({ pos, name, score }: { pos: number; name: string; score: number }) {
+    return (
+        <div className={styles.smallItem}>
+            <p>
+                {pos}. {name}
+            </p>
+            <p>{score} points</p>
         </div>
     );
 }

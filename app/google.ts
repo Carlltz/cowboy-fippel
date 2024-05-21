@@ -19,7 +19,7 @@ export async function loadSpreadsheet() {
 }
 
 export async function formatResponse(values: [[string, string]]) {
-    return values
+    return (values || [])
         .map(([name, score]) => ({ name, score: isNaN(parseInt(score)) ? 0 : parseInt(score) }))
         .sort((a, b) => b.score - a.score);
 }
